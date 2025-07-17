@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drilling Pioneer LTD - Ghana's Premier Water Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+      body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgb(243, 239, 239);
+            overflow-x: hidden;
+        }
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+    backdrop-filter: blur(20%);
+}
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section with Slideshow */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .mySlides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .mySlides.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: heroFadeIn 2s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            padding: 1rem 2rem;
+            border: 2px solid #FFD700;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #FFD700;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 5%;
+            background: #fff;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #FFD700;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: #fff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .about-text h3 {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #FFD700;
+            display: block;
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            height: 500px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .image-content {
+            text-align: center;
+            z-index: 2;
+            color: #000;
+        }
+
+        .image-content h4 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 5%;
+            background: #fff;
+            color: #000;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #000;
+            color: #fff;
+            padding: 3rem;
+            border-radius: 20px;
+            height: fit-content;
+        }
+
+        .contact-info h3 {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 3px solid #FFD700;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .footer-highlight {
+            color: #FFD700;
+            font-weight: 700;
+        }
+
+        /* Animations */
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            z-index: 10000;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scroll-indicator"></div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Drilling Pioneer</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="slideshow-container">
+                <div class="mySlides active" style="background-image: url('slide1.jpg');"></div>
+                <div class="mySlides" style="background-image: url('slide2.jpg');"></div>
+                <div class="mySlides" style="background-image: url('slide3.jpg');"></div>
+                <div class="mySlides" style="background-image: url('slide4.jpg');"></div>
+                <div class="mySlides" style="background-image: url('slide5.jpg');"></div>
+                <div class="mySlides" style="background-image: url('slide6.jpg');"></div>
+                <div class="mySlides" style="background-image: url('slide7.jpg');"></div>     
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Drilling Pioneer LTD</h1>
+                <p class="hero-subtitle">Ghana's Leading Water Solutions & Borehole Specialists</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Get Free Quote</a>
+                    <a href="#services" class="btn-secondary">Our Services</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our Expert Services</h2>
+                    <p class="section-subtitle">Comprehensive water solutions for residential, commercial, and industrial needs</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🏗️</div>
+                        <h3 class="service-title">Borehole Drilling</h3>
+                        <p class="service-description">Professional borehole drilling with modern equipment and techniques. We ensure optimal water yield and quality for your specific needs.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">⚙️</div>
+                        <h3 class="service-title">Underground Pumps</h3>
+                        <p class="service-description">Installation, maintenance, and repair of submersible pumps. Reliable underground water extraction systems for consistent performance.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-title">Surface Pumps</h3>
+                        <p class="service-description">Complete surface pump solutions including centrifugal, jet, and pressure pumps for various water distribution needs.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🚰</div>
+                        <h3 class="service-title">Plumbing Services</h3>
+                        <p class="service-description">Full-service plumbing for residential and commercial properties. From basic repairs to complex installations.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">💡</div>
+                        <h3 class="service-title">Water Consultancy</h3>
+                        <p class="service-description">Expert consultation for new borehole projects and system upgrades. We help you make informed decisions.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🛠️</div>
+                        <h3 class="service-title">Maintenance & Repair</h3>
+                        <p class="service-description">24/7 maintenance and emergency repair services. Keeping your water systems running efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <h3>Trusted Water Solutions Since Day One</h3>
+                        <p>Drilling Pioneer LTD has established itself as Ghana's premier water solutions company, combining years of experience with cutting-edge technology to deliver exceptional results.</p>
+                        <p>Our commitment to quality, reliability, and customer satisfaction has made us the preferred choice for residential, commercial, and industrial clients across the Greater Accra region and beyond.</p>
+                        <p>We take pride in our comprehensive approach to water systems, from initial consultation to ongoing maintenance, ensuring your water needs are met with professional excellence.</p>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Emergency Service</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Licensed & Insured</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">5★</span>
+                                <span class="stat-label">Customer Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image fade-in">
+                        <div class="image-content">
+                            <h4>Excellence in Every Drop</h4>
+                            <p>Your trusted partner for reliable water solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Ready to start your water solution project? Contact us today for a free consultation</p>
+                </div>
+                
+                <div class="contact-wrapper">
+                    <div class="contact-info fade-in">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <div>
+                                <strong>Location</strong><br>
+                                Tema, Greater Accra Region, Ghana
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span>📞</span>
+                            <div>
+                                <strong>Phone</strong><br>
+                                <a href="tel:+233542514328" style="color: #FFD700; text-decoration: none;">+233 54 251 4328</a>
+                                <p></p>
+                                <a href="tel:+233208332636" style="color: #FFD700; text-decoration: none;">+233 20 833 2636</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:drillingpioneer@gmail.com" style="color: #FFD700; text-decoration: none;">drillingpioneer@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span>🕒</span>
+                            <div>
+                                <strong>Working Hours</strong><br>
+                                Mon-Fri: 8AM-6PM<br>
+                                Sat: 9AM-4PM<br>
+                                Sun: Emergency Only
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form fade-in">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service">Service Required *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service...</option>
+                                    <option value="borehole">Borehole Drilling</option>
+                                    <option value="underground">Underground Pump Services</option>
+                                    <option value="surface">Surface Pump Services</option>
+                                    <option value="plumbing">Plumbing Services</option>
+                                    <option value="consultancy">Water Consultancy</option>
+                                    <option value="maintenance">Maintenance & Repair</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Project Details *</label>
+                                <textarea id="message" name="message" placeholder="Tell us about your project requirements..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                © 2025 <span class="footer-highlight">Drilling Pioneer LTD</span> - 
+                Ghana's Premier Water Solutions Company | Licensed & Insured
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    // Slideshow functionality
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }
+        slides[slideIndex - 1].classList.add("active");
+        setTimeout(showSlides, 5000); // Change slide every 5 seconds
+    }
+        
+        // Start slideshow
+        showSlides();
+
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scroll-indicator').style.width = scrollPercent + '%';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(255, 215, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We will contact you within 24 hours.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
