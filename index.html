@@ -11,22 +11,22 @@
             box-sizing: border-box;
         }
 
-      body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: rgb(243, 239, 239);
             overflow-x: hidden;
         }
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: -1;
-    backdrop-filter: blur(20%);
-}
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+            backdrop-filter: blur(20%);
+        }
         /* Header */
         .header {
             position: fixed;
@@ -91,13 +91,14 @@ body::before {
 
         /* Hero Section with Slideshow */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding-top: 60px;
         }
 
         .slideshow-container {
@@ -131,7 +132,8 @@ body::before {
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+            background: transparent; /* Removed dark gradient, set to transparent */
+            backdrop-filter: blur(2px); /* Added 10% blur effect (approximated as 2px) */
             z-index: 2;
         }
 
@@ -141,6 +143,14 @@ body::before {
             max-width: 800px;
             padding: 0 2rem;
             animation: heroFadeIn 2s ease-out;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
         .hero-title {
@@ -209,6 +219,7 @@ body::before {
             padding: 100px 5%;
             background: #fff;
             color: #000;
+            margin-top: 20px;
         }
 
         .container {
@@ -613,8 +624,10 @@ body::before {
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                 <img class="logo" src="logo.png" alt="Logo">
-                <h1 class="hero-title">Drilling Pioneer LTD</h1>
+                <div class="logo-container">
+                    <img class="logo" src="logo.png" alt="Logo">
+                    <h1 class="hero-title">Drilling Pioneer LTD</h1>
+                </div>
                 <p class="hero-subtitle">Ghana's Leading Water Solutions & Borehole Specialists</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">Get Free Quote</a>
